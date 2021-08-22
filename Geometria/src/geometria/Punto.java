@@ -4,8 +4,10 @@ public class Punto {
 private double x;
 private double y;
 
-
-
+public Punto(double x,double y){
+	this.x=x;
+	this.y=y;
+}
 
 	public double getX() {
 		return x;
@@ -20,5 +22,15 @@ private double y;
 		this.y = y;
 	}
 
+	public boolean equals(Punto p){
+		return ((x==p.getX())&&(y==p.getY()));
+		}
+	//public String toString(){
+	//	return "("+x+","+y+")";
+		//}
+	public String toString(){ //polimorfismo puro
+		return "("+x+","+y+")";
+	}
+	
 
 }
