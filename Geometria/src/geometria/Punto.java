@@ -25,12 +25,16 @@ public Punto(double x,double y){
 	public boolean equals(Punto p){
 		return ((x==p.getX())&&(y==p.getY()));
 		}
-	//public String toString(){
-	//	return "("+x+","+y+")";
-		//}
+	
 	public String toString(){ //polimorfismo puro
-		return "("+x+","+y+")";
+	return "("+x+","+y+")";
 	}
+	
+	public void mover(double x,double y){
+	this.x=this.x + x;
+	this.y=this.y + y;
+	}
+	
 	
 
 }
