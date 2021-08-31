@@ -1,5 +1,5 @@
-package geometria;
-
+package modelo;
+//import modelo.Numero;
 public class Punto {
 private double x;
 private double y;
@@ -34,7 +34,10 @@ public Punto(double x,double y){
 	this.x=this.x + x;
 	this.y=this.y + y;
 	}
-	
-	
+	public double calcularDistancia(Punto punto){
+		double calculo1=Math.pow((punto.getX()-x),2);
+		double calculo2=Math.pow((punto.getY()-y), 2);
+		return (Math.sqrt(calculo1+calculo2));
+	}
 
 }

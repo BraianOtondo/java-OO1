@@ -1,6 +1,6 @@
 package test;
-import geometria.Punto;
-import geometria.Circulo;;
+import modelo.Circulo;
+import modelo.Punto;;
 public class TestGeometria {
 
 	public static void main(String[] args) {

@@ -42,9 +42,13 @@ int resto;
 	}	
 return (esPrimo);
 }
-public double calcularPotencia(int exp){
-	double potencia=Math.pow(n, exp);
+public double calcularPotencia(int num,int exp){
+	double potencia=Math.pow(num, exp);
 	return potencia;
+}
+public double calcularPotencia(int exp){
+	return calcularPotencia(n,exp);
+
 }
 
 public boolean esPar(){

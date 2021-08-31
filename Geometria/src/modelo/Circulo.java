@@ -1,5 +1,4 @@
-package geometria;
-
+package modelo;
 public class Circulo {
 private Punto origen;
 private double radio;
@@ -23,13 +22,15 @@ private double radio;
 	this.radio = radio;
 	}
 
-	
+/*2) Implementar el método para calcular la distancia entre dos puntos como lo muestra el diagrama
+de clases.
+*/
 
 	//public void mover(double desplazamientoX,double desplazamientoY){//mueve el circulo que tiene el objeto CIrculo
 	//origen.mover(desplazamientoX,desplazamientoY); //Puedo reutilizar este metodo porque la clase tiene un objeto Punto
 	//esto cambia el punto pero cambia el objeto punto tambien, esto puede cambiar a todos los circulos si no hacemos un new
 	//}//cambia la "x" y "y" del punto que tiene la clase Circulo 
-	
+
 	//para que no cambie todos los circulos y se vean afectados podemos hacer esto
 	 public void mover(double desplazamientoX,double desplazamientoY){
 	 Punto puntoNuevo=new Punto(origen.getX()+desplazamientoX,origen.getY()+desplazamientoY);

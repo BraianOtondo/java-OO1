@@ -19,6 +19,5 @@ public class TestNumero {
 	    }
 		System.out.println("Factorial: "+numero2.calcularFactorial());
 		System.out.println("Combinatoria: "+numero2.numeroCombinatorio(3));
-		
 	}
 }
