@@ -53,6 +53,12 @@ public class Paciente {
 		resultado= nombre+" "+apellido;
 		return resultado;
 	}
+	@Override
+	public String toString() {
+		return "Paciente [nombre=" + nombre + ", apellido=" + apellido + ", estatura=" + estatura + ", peso=" + peso
+				+ "]";
+	}
+	
 }
 
 
