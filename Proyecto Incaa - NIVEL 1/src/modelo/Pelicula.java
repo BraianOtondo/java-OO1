@@ -25,6 +25,13 @@ public class Pelicula {
 	public void setPelicula(String pelicula) {
 		this.pelicula = pelicula;
 	}
+	
+
+	//@Override
+	public boolean equals(Pelicula pelicula) {
+		//Pelicula pelicula = (Pelicula) obj;// esto es para respetar los parametros del override
+		return (this.pelicula.equalsIgnoreCase(pelicula.getPelicula())); // POR NOMBRE PORQUE AGREGAMOS DEPENDIENDO EL NOMBRE Y HACEMOS LA COMPARACION
+	}
 
 	@Override
 	public String toString() {
