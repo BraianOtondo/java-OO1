@@ -30,7 +30,7 @@ public class Pelicula {
 	//@Override
 	public boolean equals(Pelicula pelicula) {
 		//Pelicula pelicula = (Pelicula) obj;// esto es para respetar los parametros del override
-		return (this.pelicula.equalsIgnoreCase(pelicula.getPelicula())); // POR NOMBRE PORQUE AGREGAMOS DEPENDIENDO EL NOMBRE Y HACEMOS LA COMPARACION
+		return this.pelicula.equalsIgnoreCase(pelicula.getPelicula()); // POR NOMBRE PORQUE AGREGAMOS DEPENDIENDO EL NOMBRE Y HACEMOS LA COMPARACION
 	}
 
 	@Override

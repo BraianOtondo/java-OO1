@@ -15,6 +15,12 @@ public class Incaa {
 	public void setCatalogo(List<Pelicula> catalogo) {
 		this.catalogo = catalogo;
 	}
+	
+	@Override
+	public String toString() {
+		return "Incaa [catalogo=" + catalogo + "]";
+	}
+
 	public boolean estaVacia(){
 		return(catalogo.size()==0);
 	}
@@ -68,16 +74,23 @@ public class Incaa {
 		return mayor;
 	}
 	
-	public void modificarPelicula(int idPelicula,String pelicula)throws Exception{//cambia el nombre de la pelicula
+	public boolean modificarPelicula(int idPelicula,String pelicula)throws Exception{//cambia el nombre de la pelicula
 		if (traerPelicula(idPelicula) == null) {
 			throw new Exception("La pelicula no existe");
 		}
 		else{
-			//Pelicula peliculaEncontrada=traerPelicula(idPelicula);
-			//peliculaEncontrada.setIdPelicula(idPelicula);
-			//peliculaEncontrada.setPelicula(pelicula);
 			traerPelicula(idPelicula).setPelicula(pelicula); 
+		return true;
 		}
 	
+	}
+	
+	public boolean eliminarPelicula(int idPelicula)throws Exception{
+		if (traerPelicula(idPelicula) == null) {
+			throw new Exception("La pelicula no existe");
+		}else{
+			catalogo.remove(traerPelicula(idPelicula));
+		}
+		return true;
 	}
 }
