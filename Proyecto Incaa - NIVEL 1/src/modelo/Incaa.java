@@ -55,21 +55,15 @@ public class Incaa {
 			if(traerPelicula(pelicula)!= null){
 				throw new Exception("La pelicula"+pelicula +" ya existe");
 			}
-			catalogo.add(new Pelicula(traerId() + 1, pelicula));
+			System.out.println("La pelicula : "+pelicula+" se agrego correctamente");
+			catalogo.add(new Pelicula(traerId()+1, pelicula));
 	return true;
 	}
 	
 	public int traerId() { // ESTE METODO TRAE EL ID MAYOR DE TODOS 
-		int mayor = 0;
-		if (catalogo.size() != 0) {
-			mayor = catalogo.get(0).getIdPelicula();
-		}
-		int actual;
-		for (int i = 0; i < catalogo.size(); i++) {
-			actual = catalogo.get(i).getIdPelicula();
-			if (actual > mayor) {
-				mayor = actual;
-			}
+		int mayor=0;
+		if (this.catalogo.size() != 0) {
+			mayor =catalogo.get(catalogo.size()-1).getIdPelicula();
 		}
 		return mayor;
 	}

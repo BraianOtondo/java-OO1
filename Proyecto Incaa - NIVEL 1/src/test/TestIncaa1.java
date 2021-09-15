@@ -14,23 +14,28 @@ public class TestIncaa1 {
 			System.out.println("**************1*****************");
 			System.out.println(incaa.agregarPelicula("Spiderman 1"));
 			System.out.println("**************2*****************");
+			System.out.println(incaa.agregarPelicula("Spiderman 2"));
+			System.out.println("**************3*****************");
 			System.out.println(incaa.agregarPelicula("Spiderman 1"));
 		} catch (Exception e) {
-			System.out.println(e.getMessage()+" ENTENDISTE???");
+			System.out.println(e.getMessage());
 		}
 		
 		try{
-			System.out.println(incaa.modificarPelicula(2,"EL HOMBRE ARAÑA 1"));
+			System.out.println(incaa.modificarPelicula(2,"EL HOMBRE ARAÑA 2"));
 		}catch(Exception e){
 			System.out.println(e.getMessage()+" NO SE PUDO PAPU :( ");
 		}
-		System.out.println(incaa.getCatalogo().get(0).getPelicula());
+		//System.out.println(incaa.getCatalogo().get(0).getPelicula());
 		try{
 			incaa.eliminarPelicula(1);
 			incaa.eliminarPelicula(2);
 			
 		}catch(Exception e){
 			System.out.println(e.getMessage()+"NO ENTENDES??? PELOTUDO! ");
+		}
+		for(int i=0;i<incaa.getCatalogo().size();i++){
+			System.out.println(incaa.getCatalogo().get(i).toString());
 		}
 		
 		
