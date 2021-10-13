@@ -43,6 +43,7 @@ public class TestSupermercado1 {
 		System.out.println("-------------------------AGREGAR ITEM----------------------------------");
 		try {
 			super1.getLstCarrito().get(0).agregarItem(super1.traerProducto("Leche Sancor"),2);
+			super1.getLstCarrito().get(0).agregarItem(super1.traerProducto("Fideos"), 3);
 		//	carrito1.agregarItem(super1.traerProducto("Leche"),2);
 			//carrito1.agregarItem(super1.traerProducto("Café"),1);
 			//carrito1.agregarItem(super1.traerProducto("Fideos"), 3);
@@ -53,7 +54,8 @@ public class TestSupermercado1 {
 			System.out.println(e.getMessage());
 		}
 		System.out.println(super1.traerProducto(1).getProducto());
-
+		System.out.println("SUBTOTAL SANCOR:"+super1.getLstCarrito().get(0).getLstItem().get(0).calcularSubTotal());
+		System.out.println("TOTAL: "+super1.getLstCarrito().get(0).calcularTotal());
 		System.out.println("--------------------------ELIMINAR PRODUCTO--------------------------------");
 		try {
 			System.out.println(super1.eliminarProducto(1));

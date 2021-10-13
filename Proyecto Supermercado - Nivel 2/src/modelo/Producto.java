@@ -31,7 +31,9 @@ public class Producto {
 	public String toString() {
 		return "Producto [idProducto=" + idProducto + ", producto=" + producto + ", precio=" + precio + "]";
 	}
-	
+	public boolean equals(Producto producto) {
+		return this.producto.equalsIgnoreCase(producto.getProducto()) && this.idProducto==producto.getIdProducto();
+	}
 	
 
 
