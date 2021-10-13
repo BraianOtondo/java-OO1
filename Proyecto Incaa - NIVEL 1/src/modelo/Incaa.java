@@ -55,8 +55,9 @@ public class Incaa {
 			if(traerPelicula(pelicula)!= null){
 				throw new Exception("La pelicula"+pelicula +" ya existe");
 			}
-			System.out.println("La pelicula : "+pelicula+" se agrego correctamente");
-			catalogo.add(new Pelicula(traerId()+1, pelicula));
+			
+		catalogo.add(new Pelicula(traerId()+1, pelicula));
+		System.out.println("La pelicula : "+pelicula+" se agrego correctamente");
 	return true;
 	}
 	
@@ -74,6 +75,7 @@ public class Incaa {
 		}
 		else{
 			traerPelicula(idPelicula).setPelicula(pelicula); 
+			System.out.println("La pelicula : "+pelicula+" se modificó correctamente");
 		return true;
 		}
 	

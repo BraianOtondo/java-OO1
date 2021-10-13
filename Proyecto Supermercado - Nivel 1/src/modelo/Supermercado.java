@@ -1,5 +1,7 @@
 package modelo;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,19 +34,6 @@ public class Supermercado {
 		return "Supermercado [gondola=" + gondola + ", lstCarrito=" + lstCarrito + "]";
 	}
 
-	public Producto traerProducto(int idProducto){
-		int i=0;
-		boolean encontrado=false;
-		Producto p=null;
-		while(i<this.gondola.size() && encontrado==false){
-			if(this.gondola.get(i).getIdProducto()==idProducto){
-				p=this.gondola.get(i);
-				encontrado=true;
-			}
-			i++;
-		}
-		return p;
-	}
 	//SOBRECARCA
 	public Producto traerProducto(String producto){
 		int i=0;
@@ -67,7 +56,26 @@ public class Supermercado {
 		}
 		return mayor;
 	}
-	
+	public int traerIdCarrito(){
+		int mayor=0;
+		if(this.lstCarrito.size()!=0){
+			mayor=this.lstCarrito.get(this.lstCarrito.size()-1).getIdCarrito();
+		}
+		return mayor;
+	}
+	public Producto traerProducto(int idProducto){
+		int i=0;
+		boolean encontrado=false;
+		Producto p=null;
+		while(i<this.gondola.size() && encontrado==false){
+			if(this.gondola.get(i).getIdProducto()==idProducto){
+				p=this.gondola.get(i);
+				encontrado=true;
+			}
+			i++;
+		}
+		return p;
+	}
 	
 	public boolean agregarProducto(String producto, float precio)throws Exception{
 		if(this.traerProducto(producto)!=null){
@@ -90,27 +98,70 @@ public class Supermercado {
 		return true;
 	}
 	
-	public boolean eliminarProducto(int idProducto)throws Exception{
-		Producto productoEliminar=this.traerProducto(idProducto);
-		ItemCarrito itemEncontrado = traerCarrito(productoEliminar);
-		if(productoEliminar==null || itemEncontrado!=null){
-			throw new Exception("El producto con id: "+idProducto+" no existe o esta en un carrito");
-		}else {
-			gondola.remove(productoEliminar);
-			return true;
+	public boolean eliminarProducto(int idProducto) throws Exception {
+		Producto productoExiste = traerProducto(idProducto);// POR ID
+		//Carrito productoOcupado = traerCarrito(productoEncontrado);// POR PRODUCTO
+		
+		if (productoExiste == null ||  this.buscarProducto(idProducto)== false) {
+			throw new Exception("El producto no existe o existe en otro carrito");
+		}else{
+			gondola.remove(productoExiste);
+			System.out.println("El producto se eliminó correctamente");	
 		}
+		return true;
 	}
-	public ItemCarrito traerCarrito(Producto producto) {
-		ItemCarrito ic = null;
-		int i = 0;
-		boolean encontrado = false;
-		while (i < lstCarrito.size() && encontrado == false) {
-			if(this.lstCarrito.get(i).traerItemCarrito(producto)!=null){
-			ic=this.lstCarrito.get(i).traerItemCarrito(producto);	
-			encontrado=true;
+	public Carrito traerCarrito(int idCarrito){
+		Carrito c=null;
+		int i=0;
+		int n=this.tamanioListaCarrito();
+		boolean encontrado=false;
+		while((i<n)&&(encontrado==false)){
+			if(this.lstCarrito.get(i).equals(idCarrito)){
+				c=this.lstCarrito.get(i);
+				encontrado=true;
+			}
+		i++;
+		}
+		return c;
+	}
+	public Carrito traerCarrito(LocalDate fecha, LocalTime hora){
+		Carrito c=null;
+		int i=0;
+		int n=this.tamanioListaCarrito();
+		boolean encontrado=false;
+		while((i<n)&&(encontrado==false)){
+			if(this.lstCarrito.get(i).getFecha().equals(fecha) && this.lstCarrito.get(i).getHora().equals(hora)){
+				c=this.lstCarrito.get(i);
+				encontrado=true;
+			}
+		i++;
+		}
+		return c;
+	}
+	public boolean agregarCarrito(LocalDate fecha, LocalTime hora)throws Exception{
+	if(this.traerCarrito(fecha, hora)!=null){
+		throw new Exception("El carrito ya existe ");
+	}else{
+		this.lstCarrito.add(new Carrito(this.traerIdCarrito()+1,fecha,hora));
+		System.out.println("Carrito agregado correctamente");
+	}
+		return true;
+	}
+	
+	public int tamanioListaCarrito(){
+		return this.lstCarrito.size();
+	}
+	public boolean buscarProducto(int idProducto){
+		boolean existe=false;
+		int i=0;
+		int n=this.tamanioListaCarrito();
+		while((i<n)&&(existe==false)){
+			if(this.lstCarrito.get(i).buscarProducto(idProducto)==true){
+				existe=true;
 			}
 			i++;
 		}
-		return ic;
+		return existe;
 	}
-}	
+	
+}
