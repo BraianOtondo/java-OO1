@@ -38,5 +38,7 @@ public class ItemCarrito {
 	public float calcularSubTotal(){
 		return this.producto.getPrecio()*this.cantidad;
 	}
-	
+	public boolean existeProducto(int idProducto){
+		return(this.producto.getIdProducto()==idProducto);
+	}
 }	
